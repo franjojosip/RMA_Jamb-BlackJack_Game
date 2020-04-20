@@ -1,0 +1,157 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:text="@string/back"
+            android:layout_gravity="right"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:fontFamily="casual"
+            android:text="@string/jambHeader"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_dice1"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_1"/>
+
+            <ImageView
+                android:id="@+id/image_dice2"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"/>
+
+            <ImageView
+                android:id="@+id/image_dice3"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_dice4"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_4"/>
+
+            <ImageView
+                android:id="@+id/image_dice5"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_5"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"/>
+
+            <ImageView
+                android:id="@+id/image_dice6"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:src="@drawable/dice_6"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/lockDiceText"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnIsJamb"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:text="@string/check_jamb"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnIsPoker"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:text="@string/check_poker"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnIsStraight"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:text="@string/check_straight"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnRollADice"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:text="@string/roll_a_dice"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

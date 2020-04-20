@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Jamb and BlackJack</string>
+    <string name="jambHeader">Jamb</string>
+    <string name="lockDiceText">Click on dice to lock/unlock a dice</string>
+    <string name="check_jamb">Check Jamb</string>
+    <string name="check_poker">Check Poker</string>
+    <string name="check_straight">Check Straight</string>
+    <string name="play_jamb">Play Jamb</string>
+    <string name="play_blackjack">Play BlackJack</string>
+    <string name="blackjack">BlackJack</string>
+    <string name="jamb">Jamb</string>
+    <string name="choose_game">Choose game</string>
+    <string name="back">Back</string>
+    <string name="roll_a_dice">Roll a dice</string>
+</resources>
