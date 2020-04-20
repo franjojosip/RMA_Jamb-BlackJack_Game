@@ -1,10 +1,8 @@
 package ht.ferit.fjjukic.rmalv1
 
-import android.widget.Toast
-
 class Jamb(number: Int) {
     private var dices: MutableList<Dice> = mutableListOf()
-    private var numberOfDices = number;
+    private var numberOfDices = number
 
     init {
         for (i: Int in 1..this.numberOfDices) this.dices.add(Dice())
@@ -79,6 +77,6 @@ class Jamb(number: Int) {
     fun getDiceResult(): MutableList<Int> {
         val values: MutableList<Int> = mutableListOf()
         for(item: Dice in this.dices) values.add(item.getDiceNumber())
-        return values;
+        return values
     }
 }

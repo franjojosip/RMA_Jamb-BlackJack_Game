@@ -1,0 +1,181 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BlackJackMainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:background="#FFFFFF"
+            android:text="@string/back" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/blackjack"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvComputer"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:fontFamily="casual"
+                android:gravity="right"
+                android:text="@string/computer_result"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginRight="55dp"
+                android:layout_marginEnd="55dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/pcImgView1"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/pcImgView2"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/pcImgView3"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/pcImgView4"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/pcImgView5"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUser"
+                android:layout_width="170dp"
+                android:layout_height="25dp"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:text="@string/your_result"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/userImgView1"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/userImgView2"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/userImgView3"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/userImgView4"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:id="@+id/userImgView5"
+                    android:layout_width="55dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnHit"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/hit" />
+
+            <Button
+                android:id="@+id/btnStand"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="@string/stand"
+                android:layout_marginStart="70dp"
+                android:gravity="center"
+                android:layout_marginLeft="70dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,8 @@
     <string name="choose_game">Choose game</string>
     <string name="back">Back</string>
     <string name="roll_a_dice">Roll a dice</string>
+    <string name="computer_result">Computer result:</string>
+    <string name="your_result">Your result:</string>
+    <string name="hit">Hit</string>
+    <string name="stand">Stand</string>
 </resources>
