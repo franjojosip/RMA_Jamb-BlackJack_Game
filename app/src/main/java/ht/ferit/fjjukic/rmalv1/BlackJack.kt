@@ -25,6 +25,10 @@ class BlackJack {
         return computerCards.count()
     }
 
+    fun countUserCards(): Int{
+        return userCards.count()
+    }
+
     fun getCardResult(isUser: Boolean): Int{
         return when (isUser){
             true -> userCards.toList().sumBy { it.getValue() }

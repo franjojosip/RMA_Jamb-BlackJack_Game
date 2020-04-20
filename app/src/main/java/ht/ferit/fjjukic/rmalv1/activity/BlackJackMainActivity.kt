@@ -30,8 +30,6 @@ class BlackJackMainActivity : AppCompatActivity() {
     private lateinit var userImgView5: ImageView
     private lateinit var resultPc: TextView
     private lateinit var resultUser: TextView
-    private var countPc: Int = 1
-    private var countUser: Int = 2
     private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,7 +97,7 @@ class BlackJackMainActivity : AppCompatActivity() {
             val userResult: Int = this.blackJack.getCardResult(true)
             var pcResult: Int = this.blackJack.getCardResult(false)
             resultPc.text = "Your Result: $userResult"
-            userImgView3.setImageResource(resources.getIdentifier(card.getName(), "drawable", "ht.ferit.fjjukic.rmalv1"))
+            setCardImage(card, true)
             checkUserResult(userResult, pcResult)
         }
         btnStand.setOnClickListener {
@@ -167,23 +165,91 @@ class BlackJackMainActivity : AppCompatActivity() {
             blackJack.addCard(false, card)
             var pcResult2 = this.blackJack.getCardResult(false)
             resultPc.text = "Computer Result: $pcResult2"
-            when {
-                blackJack.countComputerCards() == 2 -> {
-                    pcImgView2.setImageResource(resources.getIdentifier(card.getName(),"drawable","ht.ferit.fjjukic.rmalv1"))
-                }
-                blackJack.countComputerCards() == 3 -> {
-                    pcImgView3.setImageResource(resources.getIdentifier(card.getName(),"drawable","ht.ferit.fjjukic.rmalv1"))
-                }
-                blackJack.countComputerCards() == 4 -> {
-                    pcImgView4.setImageResource(resources.getIdentifier(card.getName(),"drawable","ht.ferit.fjjukic.rmalv1"))
-                }
-                else -> {
-                    pcImgView5.setImageResource(resources.getIdentifier(card.getName(),"drawable","ht.ferit.fjjukic.rmalv1"))
-                }
-            }
+            setCardImage(card, false)
             handler.postDelayed({
                 checkResultStand(pcResult2, userResult)
             }, 3000)
+        }
+    }
+
+    private fun setCardImage(card: Card, isUser: Boolean){
+        var cardCount: Int = when (isUser){
+            true -> blackJack.countUserCards()
+            false -> blackJack.countComputerCards()
+        }
+        when (cardCount) {
+            2 -> {
+                when (isUser) {
+                    true -> userImgView2.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                    false -> pcImgView2.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                }
+            }
+            3 -> {
+                when (isUser) {
+                    true -> userImgView3.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                    false -> pcImgView3.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                }
+            }
+            4 -> {
+                when (isUser) {
+                    true -> userImgView4.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                    false -> pcImgView4.setImageResource(
+                        resources.getIdentifier(
+                            card.getName(),
+                            "drawable",
+                            "ht.ferit.fjjukic.rmalv1"
+                        )
+                    )
+                }
+            }
+            else -> {
+            when (isUser) {
+                true -> userImgView5.setImageResource(
+                    resources.getIdentifier(
+                        card.getName(),
+                        "drawable",
+                        "ht.ferit.fjjukic.rmalv1"
+                    )
+                )
+                false -> pcImgView5.setImageResource(
+                    resources.getIdentifier(
+                        card.getName(),
+                        "drawable",
+                        "ht.ferit.fjjukic.rmalv1"
+                    )
+                )
+            }
+        }
         }
     }
 
