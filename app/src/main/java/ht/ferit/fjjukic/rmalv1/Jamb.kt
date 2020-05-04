@@ -5,78 +5,46 @@ class Jamb(number: Int) {
     private var numberOfDices = number
 
     init {
-        for (i: Int in 1..this.numberOfDices) this.dices.add(Dice())
-    }
-
-    fun rollDices(){
-        for (item: Dice in this.dices) item.rollADice()
-    }
-
-    fun changeIsDiceLocked(index: Int): Boolean {
-        return this.dices[index].changeIsLockedDice()
-    }
-
-    fun checkDuplicates(numberOfDuplicates: Int): String{
-        var text = ""
-        if (numberOfDuplicates == 4){
-            text = when {
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value >= 4 }.count() == 1 -> {
-                    "a poker"
-                }
-                else -> {
-                    "not a poker"
-                }
-            }
-            when {
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value >= 5 }.count() == 1 -> {
-                    text += " and also a jamb"
-                }
-            }
+        for (i: Int in 1..this.numberOfDices) {
+            this.dices.add(Dice())
         }
-        if (numberOfDuplicates == 5) {
-            text = when {
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value >= 5 }
-                    .count() == 1 -> {
-                    "a jamb"
-                }
-                else -> {
-                    "not a jamb"
-                }
+    }
+
+    fun roll(){
+        for (item: Dice in this.dices) item.roll()
+    }
+
+    fun lock(index: Int): Boolean {
+        return this.dices[index].lock()
+    }
+
+    fun checkDuplicates(quantity: Int, name: String): String{
+        return when{
+            this.dices.groupingBy { it.getValue() }.eachCount().filter { it.value >= quantity}.count() > 0 -> {
+                "a $name"
             }
+            else -> "not a $name"
         }
-        return text
     }
 
     fun checkStraight(): String {
-        var straightText: String = "not a"
-        if (this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(1) &&
-            this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(2) &&
-            this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(3) &&
-            this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(4) &&
-            this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(5))
-        {
-            straightText = "a small"
-            when {
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(6) -> {
-                    straightText += " and a large"
-                }
+        val sortedDices:List<Dice> = this.dices.sortedBy { it.getValue() }
+        var isStraight = true
+        for(i:Int in 1 until sortedDices.count()) {
+            if(sortedDices[i].getValue() != (sortedDices[i - 1].getValue() + 1)) {
+                isStraight = false
+                break
             }
         }
-        else if (this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(2) &&
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(3) &&
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(4) &&
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(5) &&
-                this.dices.groupingBy { it.getDiceNumber() }.eachCount().filter { it.value > 0 }.keys.contains(6))
-            {
-                straightText = "a large"
-            }
-
-        return straightText
+        return when{
+            isStraight -> "a straight"
+            else -> "not a straight"
+        }
     }
 
-    fun getDiceResult(): MutableList<Int> {
+    fun getResult(): MutableList<Int> {
         val values: MutableList<Int> = mutableListOf()
-        for(item: Dice in this.dices) values.add(item.getDiceNumber())
+        for(item: Dice in this.dices) values.add(item.getValue())
         return values
     }
 }

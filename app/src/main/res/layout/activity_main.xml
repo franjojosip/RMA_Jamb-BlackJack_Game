@@ -49,7 +49,7 @@
             android:background="@drawable/border"
             android:textColor="#3F4041"
             />
-</LinearLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

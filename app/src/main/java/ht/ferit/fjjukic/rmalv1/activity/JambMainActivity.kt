@@ -15,17 +15,17 @@ class JambMainActivity : AppCompatActivity() {
         setContentView(R.layout.jamb_main)
 
         val jambGame = Jamb(6)
-        setClickOnButtons(jambGame)
-        setClickOnImages(jambGame)
+        setButtonListener(jambGame)
+        setImageViewListener(jambGame)
         startGame(jambGame)
     }
 
     private fun startGame(jambGame: Jamb){
-        jambGame.rollDices()
-        setDiceImages(jambGame.getDiceResult())
+        jambGame.roll()
+        setDiceImage(jambGame.getResult())
     }
 
-    private fun setClickOnButtons(jambGame: Jamb){
+    private fun setButtonListener(jambGame: Jamb){
         val btnRollADice: Button = findViewById(R.id.btnRollADice)
         val btnIsJamb: Button = findViewById(R.id.btnIsJamb)
         val btnIsPoker: Button = findViewById(R.id.btnIsPoker)
@@ -33,17 +33,17 @@ class JambMainActivity : AppCompatActivity() {
         val btnBack: Button = findViewById(R.id.btnBack)
 
         btnRollADice.setOnClickListener {
-            jambGame.rollDices()
-            setDiceImages(jambGame.getDiceResult())
+            jambGame.roll()
+            setDiceImage(jambGame.getResult())
         }
         btnIsJamb.setOnClickListener {
-            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkDuplicates(5)}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkDuplicates(5, "jamb")}", Toast.LENGTH_SHORT).show()
         }
         btnIsPoker.setOnClickListener {
-            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkDuplicates(4)}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkDuplicates(4, "poker")}", Toast.LENGTH_SHORT).show()
         }
         btnIsStraight.setOnClickListener {
-            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkStraight()} straight", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@JambMainActivity, "It's ${jambGame.checkStraight()}", Toast.LENGTH_SHORT).show()
 
         }
         btnBack.setOnClickListener {
@@ -51,7 +51,7 @@ class JambMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setClickOnImages(jambGame: Jamb){
+    private fun setImageViewListener(jambGame: Jamb){
         val imgViewDice1: ImageView = findViewById(R.id.image_dice1);
         val imgViewDice2: ImageView = findViewById(R.id.image_dice2);
         val imgViewDice3: ImageView = findViewById(R.id.image_dice3);
@@ -60,34 +60,34 @@ class JambMainActivity : AppCompatActivity() {
         val imgViewDice6: ImageView = findViewById(R.id.image_dice6);
 
         imgViewDice1.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(0), 1)
+            showMessage(jambGame.lock(0), 1)
         }
         imgViewDice2.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(1), 2)
+            showMessage(jambGame.lock(1), 2)
         }
         imgViewDice3.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(2), 3)
+            showMessage(jambGame.lock(2), 3)
         }
         imgViewDice4.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(3), 4)
+            showMessage(jambGame.lock(3), 4)
         }
         imgViewDice5.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(4), 5)
+            showMessage(jambGame.lock(4), 5)
         }
         imgViewDice6.setOnClickListener {
-            showLockMessage(jambGame.changeIsDiceLocked(5), 6)
+            showMessage(jambGame.lock(5), 6)
         }
     }
 
-    private fun showLockMessage(isLocked: Boolean, diceNumber: Int){
-        val lockMessage: String = when(isLocked){
-            true -> "Dice $diceNumber locked"
-            false -> "Dice $diceNumber unlocked"
+    private fun showMessage(isLocked: Boolean, diceNumber: Int){
+        val lockMessage: String = when{
+            isLocked -> "Dice $diceNumber locked"
+            else -> "Dice $diceNumber unlocked"
         }
         Toast.makeText(this@JambMainActivity, lockMessage, Toast.LENGTH_SHORT).show()
     }
 
-    private fun setDiceImages(result: MutableList<Int>){
+    private fun setDiceImage(result: MutableList<Int>){
         val imgViewDice1: ImageView = findViewById(R.id.image_dice1);
         val imgViewDice2: ImageView = findViewById(R.id.image_dice2);
         val imgViewDice3: ImageView = findViewById(R.id.image_dice3);
